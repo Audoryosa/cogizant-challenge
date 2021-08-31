@@ -45,10 +45,10 @@ public class WarehouseServiceImpl implements WarehouseService {
 
         if (sortingOrder != null) {
             switch (sortingOrder) {
-                case asc:
+                case desc:
                     Collections.sort(allVehicles, Comparator.comparing(Vehicle::getDateAdded).reversed());
                     break;
-                case desc:
+                case asc:
                     Collections.sort(allVehicles, Comparator.comparing(Vehicle::getDateAdded));
                     break;
                 default:

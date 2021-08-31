@@ -1,25 +1,35 @@
-import React from 'react';
+import { useState, useEffect } from 'react'
+import Header from './components/Header'
+import CarsContainer from './components/CarsContainer'
 
-import axios from 'axios';
+const App = () => {
+    const [cars, setCars] = useState([])
 
-export default class PersonList extends React.Component {
-    state = {
-        cars: []
+    useEffect(() => {
+        const getCars = async () => {
+            const carsFromServer = await fetchCars()
+            setCars(carsFromServer)
+        }
+        getCars()
+    }, [])
+
+    const fetchCars = async () => {
+        const res = await fetch(`http://localhost:8081/api/v1/warehouse/vehicle?isLicensed=true&sort=asc`)
+        const data = await res.json()
+
+        return data
     }
 
-    componentDidMount() {
-        axios.get(`http://localhost:8081/api/v1/warehouse/vehicle`)
-            .then(res => {
-                const cars = res.data;
-                this.setState({ cars });
-            })
-    }
 
-    render() {
-        return (
-            <ul>
-                { this.state.cars.map(car => <li>{car.make} {car.model}</li>)}
-            </ul>
-        )
-    }
+    return (
+        <div className='container'>
+            <Header />
+            {
+                cars.length > 0 ? <CarsContainer cars={cars} /> : <h2>No vehicles at the time</h2>    
+            }
+            
+        </div>
+    )
 }
+
+export default App
