@@ -10,4 +10,5 @@ public interface WarehouseService {
     public List<Warehouse> listWarehouses();
     public List<Vehicle> listVehicles(boolean isLicensed, SortingOrder sortingOrder);
     public Iterable<Warehouse> save(List<Warehouse> warehouses);
+    public Vehicle getVehicle(int id);
 }

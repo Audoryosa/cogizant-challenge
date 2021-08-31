@@ -5,6 +5,7 @@ import com.audriuskumpis.cognizantChallenge.entity.Warehouse;
 import com.audriuskumpis.cognizantChallenge.enums.SortingOrder;
 import com.audriuskumpis.cognizantChallenge.repository.WarehouseRepository;
 import com.audriuskumpis.cognizantChallenge.service.WarehouseService;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -61,5 +62,12 @@ public class WarehouseServiceImpl implements WarehouseService {
     @Override
     public Iterable<Warehouse> save(List<Warehouse> warehouses) {
         return warehouseRepository.saveAll(warehouses);
+    }
+
+    @Override
+    public Vehicle getVehicle(int id) {
+        List<Vehicle> vehicles = listVehicles(false, null);
+
+        return vehicles.stream().filter(item -> item.getId().equals(id)).findFirst().orElse(null);
     }
 }
