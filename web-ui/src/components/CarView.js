@@ -18,8 +18,12 @@ const CarView = ({carToShow}) => {
 
     return (
         <div className='car'>
-            <h2>{carToShow.year_model} {carToShow.make} {carToShow.model}</h2> <span style={{float: 'right'}}>(added: {carToShow.date_added})</span>
-            <p>Price: € {carToShow.price}</p>
+            <div>
+                <h2>{carToShow.year_model} {carToShow.make} {carToShow.model}</h2> 
+                <span>(added: {carToShow.date_added})</span>
+            </div>
+            
+            <p>Price: {carToShow.price} €</p>
             {
                 carToShow.licensed ? '' : <p style={{backgroundColor:'lightcoral', padding:'5px'}}>Not licensed</p>
             }
@@ -30,7 +34,7 @@ const CarView = ({carToShow}) => {
                     type='button'
                     className='btn btn-primary'
                     >
-                    See more
+                    {open ? 'See less' : 'See more'}
                     </button>    
             }
             {

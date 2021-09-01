@@ -5,7 +5,6 @@ import com.audriuskumpis.cognizantChallenge.entity.Warehouse;
 import com.audriuskumpis.cognizantChallenge.enums.SortingOrder;
 import com.audriuskumpis.cognizantChallenge.repository.WarehouseRepository;
 import com.audriuskumpis.cognizantChallenge.service.WarehouseService;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -52,6 +51,7 @@ public class WarehouseServiceImpl implements WarehouseService {
                     Collections.sort(allVehicles, Comparator.comparing(Vehicle::getDateAdded));
                     break;
                 default:
+                    // should not happen
                     throw new AssertionError("Invalid sorting param: " + sortingOrder);
             }
         }
