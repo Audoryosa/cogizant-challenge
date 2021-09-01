@@ -7,7 +7,7 @@ const CarsContainer = ({ cars }) => {
     return (
         <>
           {cars.map((car) => (
-              <CarView key={car._id} carToShow={car} />
+              <CarView key={car._id} carToShow={car}/>
         ))}  
         </>
     )

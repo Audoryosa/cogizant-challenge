@@ -20,6 +20,7 @@ public class WarehouseController {
     @RequestMapping(value = "/vehicle", method = RequestMethod.GET)
     public List<Vehicle> listVehicle(@RequestParam(required = false) boolean isLicensed,
                                      @RequestParam(required = false, name = "sort") SortingOrder sortingOrder) {
+
         return warehouseService.listVehicles(isLicensed, sortingOrder);
     }
 
