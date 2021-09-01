@@ -11,4 +11,5 @@ public interface WarehouseService {
     public List<Vehicle> listVehicles(boolean isLicensed, SortingOrder sortingOrder);
     public Iterable<Warehouse> save(List<Warehouse> warehouses);
     public Vehicle getVehicle(int id);
+    public Warehouse getWarehouseByVehicleId(int id);
 }

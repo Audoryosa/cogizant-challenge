@@ -6,6 +6,7 @@ import com.audriuskumpis.cognizantChallenge.enums.SortingOrder;
 import com.audriuskumpis.cognizantChallenge.repository.WarehouseRepository;
 import com.audriuskumpis.cognizantChallenge.service.WarehouseService;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,7 +68,24 @@ public class WarehouseServiceImpl implements WarehouseService {
     @Override
     public Vehicle getVehicle(int id) {
         List<Vehicle> vehicles = listVehicles(false, null);
-
         return vehicles.stream().filter(item -> item.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    @Override
+    public Warehouse getWarehouseByVehicleId(int id) {
+        List<Warehouse> warehouses = warehouseRepository.findAll();
+        Warehouse result;
+        warehouses = warehouses.stream()
+                .filter(warehouse -> warehouse.getCars().getVehicles()
+                        .stream()
+                        .anyMatch(vehicle -> vehicle.getId() == id))
+                .collect(Collectors.toList());
+        if (warehouses.isEmpty()) {
+            return null;
+        }
+        result = warehouses.get(0);
+        List<Vehicle> resultVehicles = result.getCars().getVehicles().stream().filter(vehicle -> vehicle.getId() == id).collect(Collectors.toList());
+        result.getCars().setVehicles(resultVehicles);
+        return result;
     }
 }
