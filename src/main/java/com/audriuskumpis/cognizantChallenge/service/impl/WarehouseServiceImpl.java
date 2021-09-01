@@ -6,7 +6,6 @@ import com.audriuskumpis.cognizantChallenge.enums.SortingOrder;
 import com.audriuskumpis.cognizantChallenge.repository.WarehouseRepository;
 import com.audriuskumpis.cognizantChallenge.service.WarehouseService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.Collections;
