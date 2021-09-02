@@ -73,7 +73,7 @@ public class GetWarehouseServiceTest {
     }
 
     @Test
-    public void testt() {
+    public void getTestWarehouse_test() {
         Location location = new Location("59.99999", "69.696969");
         List<Vehicle> vehicles = List.of(
                 new Vehicle(1, "Test", "Le Test", 2020, 10000, true, "2021-09-01"),
