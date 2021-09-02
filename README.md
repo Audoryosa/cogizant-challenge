@@ -1,4 +1,4 @@
-# cogizant-challenge
+# cognizant-challenge
 <br>Back-end: Spring Boot, Java 11
 <br>Front-end: React
 <br>Database: MongoDB
