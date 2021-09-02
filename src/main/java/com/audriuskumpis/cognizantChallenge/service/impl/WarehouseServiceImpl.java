@@ -5,8 +5,17 @@ import com.audriuskumpis.cognizantChallenge.entity.Warehouse;
 import com.audriuskumpis.cognizantChallenge.enums.SortingOrder;
 import com.audriuskumpis.cognizantChallenge.repository.WarehouseRepository;
 import com.audriuskumpis.cognizantChallenge.service.WarehouseService;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -16,10 +25,32 @@ import java.util.stream.Collectors;
 @Service
 public class WarehouseServiceImpl implements WarehouseService {
 
+    private Logger logger = LoggerFactory.getLogger(WarehouseServiceImpl.class);
+
     private WarehouseRepository warehouseRepository;
 
     public WarehouseServiceImpl(WarehouseRepository warehouseRepository) {
         this.warehouseRepository = warehouseRepository;
+    }
+
+
+    /**
+     *  Imports data from given .json file to repository on application start
+     */
+    @PostConstruct
+    public void initDb() {
+        // This is called after service construction. All dependencies will be created, so it is safe to use @PostConstruct for initiation
+
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<List<Warehouse>> typeReference = new TypeReference<>() {};
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/json/warehouses.json");
+        try {
+            List<Warehouse> warehouses = mapper.readValue(inputStream, typeReference);
+            warehouseRepository.saveAll(warehouses);
+            logger.info("Warehouses saved.");
+        } catch (IOException e) {
+            logger.error("Failed to save warehouses: " + e.getMessage());
+        }
     }
 
     @Override

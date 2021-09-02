@@ -19,21 +19,4 @@ public class CognizantChallengeApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CognizantChallengeApplication.class, args);
 	}
-
-	// imports data from given .json file to repository on application start
-	@Bean
-	CommandLineRunner runner(WarehouseService warehouseService) {
-		return args -> {
-			ObjectMapper mapper = new ObjectMapper();
-			TypeReference<List<Warehouse>> typeReference = new TypeReference<>() {};
-			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/warehouses.json");
-			try {
-				List<Warehouse> warehouses = mapper.readValue(inputStream, typeReference);
-				warehouseService.saveAll(warehouses);
-				System.out.println("Warehouses saved!");
-			} catch (IOException e) {
-				System.err.println("Unable to load warehouses: " + e.getMessage());
-			}
-		};
-	}
 }
