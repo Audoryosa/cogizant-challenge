@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface WarehouseRepository extends MongoRepository<Warehouse, Integer> {
-    List<Warehouse> findAll();
-    Warehouse findById(int id);
+    List<Warehouse> findAll(); // default is Iterable<T>
+    Warehouse findById(int id); // default is Optional<T>
 }
