@@ -1,7 +1,7 @@
 # cogizant-challenge
-Back-end: Spring Boot, Java 11
-Front-end: React
-Database: MongoDB
+<br>Back-end: Spring Boot, Java 11
+<br>Front-end: React
+<br>Database: MongoDB
 
 
 ## How to launch the app:
