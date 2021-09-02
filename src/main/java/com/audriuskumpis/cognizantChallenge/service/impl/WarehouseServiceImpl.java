@@ -75,6 +75,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         return vehicles.stream().filter(item -> item.getId().equals(id)).findFirst().orElse(null);
     }
 
+    // I have a Mongodb query (will be in github) but due to time shortage I did not translate it to MongoTemplate-like query.
     @Override
     public Warehouse getWarehouseByVehicleId(int id) {
         List<Warehouse> warehouses = warehouseRepository.findAll();

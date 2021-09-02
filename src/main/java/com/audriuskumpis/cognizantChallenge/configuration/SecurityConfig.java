@@ -6,6 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class SecurityConfig implements WebMvcConfigurer {
+    // By default, Spring enables basic security for CSRF and others.
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
