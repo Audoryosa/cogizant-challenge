@@ -29,7 +29,7 @@ const DetailedCarView = ({ warehouse }) => {
     }
 
     return (
-        <div>
+        <div data-testid="test-2">
             <p>This car can be found at: <b>{warehouse.name}, {warehouse.cars.location}</b></p>
             <button className='btn' onClick={() => handleAddFavourite(warehouse._id)} style={{backgroundColor: 'green'}}>
                 Add to favourites

@@ -18,7 +18,7 @@ const CarView = ({carToShow}) => {
     }
 
     return (
-        <div className='car'>
+        <div className='car' data-testid='test-1'>
             <div>
                 <h2>{carToShow.year_model} {carToShow.make} {carToShow.model}</h2> 
                 <span>(added: {carToShow.date_added})</span>
