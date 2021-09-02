@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import DetailedCarView from './DetailedCarView'
+import { AiOutlineStop } from 'react-icons/ai'
 
 
 
@@ -25,7 +26,8 @@ const CarView = ({carToShow}) => {
             
             <p>Price: {carToShow.price} €</p>
             {
-                carToShow.licensed ? '' : <p style={{backgroundColor:'lightcoral', padding:'5px'}}>Not licensed</p>
+                carToShow.licensed ? '' : <p style={{backgroundColor:'lightcoral', padding:'5px'}}><AiOutlineStop /> Not licensed </p>
+            
             }
             {
                 carToShow.licensed &&
