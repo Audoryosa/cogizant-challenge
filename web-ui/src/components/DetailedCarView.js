@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import _ from 'lodash'
 
-const DetailedCarView = ({ car }) => {
+const DetailedCarView = ({ warehouse }) => {
     const [favs, setFavs] = useState([])
 
     useEffect(() => {
@@ -30,13 +30,13 @@ const DetailedCarView = ({ car }) => {
 
     return (
         <div>
-            <h3>{car.make}, costs just {car.price}</h3>
-            <button className='btn' onClick={() => handleAddFavourite(car._id)} style={{backgroundColor: 'green'}}>
+            <p>This car can be found at: <b>{warehouse.name}, {warehouse.cars.location}</b></p>
+            <button className='btn' onClick={() => handleAddFavourite(warehouse._id)} style={{backgroundColor: 'green'}}>
                 Add to favourites
             </button>
             {
-                favs.includes(car._id) &&
-                <button className='btn' onClick={() => handleRemoveFavourite(car._id)} style={{backgroundColor: 'coral'}}>
+                favs.includes(warehouse._id) &&
+                <button className='btn' onClick={() => handleRemoveFavourite(warehouse._id)} style={{backgroundColor: 'coral'}}>
                 Remove from favourties
             </button>
             }

@@ -9,7 +9,9 @@ import java.util.List;
 public interface WarehouseService {
     public List<Warehouse> listWarehouses();
     public List<Vehicle> listVehicles(boolean isLicensed, SortingOrder sortingOrder);
-    public Iterable<Warehouse> save(List<Warehouse> warehouses);
+    public List<Warehouse> saveAll(List<Warehouse> warehouses);
+    public Warehouse save(Warehouse warehouse);
     public Vehicle getVehicle(int id);
     public Warehouse getWarehouseByVehicleId(int id);
+    public Warehouse findWarehouseById(int id);
 }

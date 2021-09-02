@@ -60,8 +60,13 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     @Override
-    public Iterable<Warehouse> save(List<Warehouse> warehouses) {
+    public List<Warehouse> saveAll(List<Warehouse> warehouses) {
         return warehouseRepository.saveAll(warehouses);
+    }
+
+    @Override
+    public Warehouse save(Warehouse warehouse) {
+        return warehouseRepository.save(warehouse);
     }
 
     @Override
@@ -86,5 +91,10 @@ public class WarehouseServiceImpl implements WarehouseService {
         List<Vehicle> resultVehicles = result.getCars().getVehicles().stream().filter(vehicle -> vehicle.getId() == id).collect(Collectors.toList());
         result.getCars().setVehicles(resultVehicles);
         return result;
+    }
+
+    @Override
+    public Warehouse findWarehouseById(int id) {
+        return warehouseRepository.findById(id);
     }
 }

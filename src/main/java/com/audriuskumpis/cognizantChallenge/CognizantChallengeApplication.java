@@ -29,7 +29,7 @@ public class CognizantChallengeApplication {
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/warehouses.json");
 			try {
 				List<Warehouse> warehouses = mapper.readValue(inputStream, typeReference);
-				warehouseService.save(warehouses);
+				warehouseService.saveAll(warehouses);
 				System.out.println("Warehouses saved!");
 			} catch (IOException e) {
 				System.err.println("Unable to load warehouses: " + e.getMessage());

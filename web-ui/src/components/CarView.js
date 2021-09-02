@@ -9,7 +9,7 @@ const CarView = ({carToShow}) => {
     const [detailedCar, setDetailedCar] = useState()
 
     const getOneCarInfo = async (id) => {
-        const res = await fetch(`http://localhost:8081/api/v1/warehouse/vehicle/${id}`)
+        const res = await fetch(`http://localhost:8081/api/v1/warehouse/${id}`)
         const data = await res.json();
         setDetailedCar(data)
         setOpen(!open)
@@ -40,7 +40,7 @@ const CarView = ({carToShow}) => {
             {
                 (open) &&
                     <div>
-                        <DetailedCarView car={detailedCar} />
+                        <DetailedCarView warehouse={detailedCar} />
                     </div>
             }
             

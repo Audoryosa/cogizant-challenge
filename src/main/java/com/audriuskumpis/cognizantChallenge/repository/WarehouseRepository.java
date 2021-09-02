@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface WarehouseRepository extends MongoRepository<Warehouse, Integer> {
     List<Warehouse> findAll();
+    Warehouse findById(int id);
 }
